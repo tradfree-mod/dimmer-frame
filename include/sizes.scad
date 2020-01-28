@@ -34,6 +34,8 @@
     - Size: Y 1, Z 3
 */
 
+fn=30;
+
 wall_thickn=1;
 
 main_body_h=8;
@@ -59,15 +61,19 @@ pcb_housing_corner_rad=6.5;
 pcb_standoffs_h=2;
 pcb_standoffs_dimens=[1.5, 1.5, pcb_standoffs_h];
 pcb_standoffs_positions=[
+    // Bottom-left
     [pcb_housing_pos.x, pcb_housing_pos.y+6],
     [pcb_housing_pos.x+6, pcb_housing_pos.y],
 
+    // Bottom right
     [pcb_housing_pos.x+pcb_housing_dimens.x-pcb_standoffs_dimens.x, pcb_housing_pos.y+6],
     [pcb_housing_pos.x+pcb_housing_dimens.x-pcb_standoffs_dimens.x-6, pcb_housing_pos.y],
 
+    // Top left
     [pcb_housing_pos.x, pcb_housing_pos.y+pcb_housing_dimens.y-pcb_standoffs_dimens.y-6],
     [pcb_housing_pos.x+6, pcb_housing_pos.y+pcb_housing_dimens.y-pcb_standoffs_dimens.y],
 
+    // Top right
     [pcb_housing_pos.x+pcb_housing_dimens.x-pcb_standoffs_dimens.x, pcb_housing_pos.y+pcb_housing_dimens.y-pcb_standoffs_dimens.y-6],
     [pcb_housing_pos.x+pcb_housing_dimens.x-pcb_standoffs_dimens.x-6, pcb_housing_pos.y+pcb_housing_dimens.y-pcb_standoffs_dimens.y],
 ];
@@ -114,3 +120,53 @@ battery_clips_pos2=battery_hole_pos;
 membr_slots_dimens=[5, 2];
 membr_spacial_slots_dimens=[1.5, 6];
 membr_spacial_offset_center=4;
+
+
+pcb_thickn=1.2; // just to be on the safe side
+pcb_clip_h=1.5;
+
+pcb_clip_stick_dimens=[.7, 4, 5-pcb_clip_h];
+pcb_clip_stick_pos=[
+    pcb_housing_pos.x-pcb_clip_stick_dimens.x,
+    main_body_dimens.y/2-pcb_clip_stick_dimens.y/2,
+    pcb_housing_pos.z
+];
+
+pcb_clip_dent_dimens=[
+    pcb_clip_stick_dimens.y,
+    pcb_clip_stick_dimens.x*2,
+    pcb_clip_h
+];
+pcb_clip_dent_rot=[0, 0, 90];
+pcb_clip_dent_pos=[
+    pcb_clip_stick_pos.x+pcb_clip_dent_dimens.y,
+    pcb_clip_stick_pos.y,
+    pcb_clip_stick_pos.z+pcb_clip_stick_dimens.z
+];
+
+pcb_clip_cutoff_dimens=[3, pcb_clip_stick_dimens.y+2, pcb_housing_dimens.z];
+pcb_clip_cutoff_pos=[
+    pcb_housing_pos.x-pcb_clip_cutoff_dimens.x,
+    main_body_dimens.y/2-pcb_clip_cutoff_dimens.y/2,
+    membrane_inset_pos.z-pcb_clip_cutoff_dimens.z
+];
+
+pcb_small_clip_dimens=[
+    pcb_standoffs_dimens.x,
+    pcb_standoffs_dimens.y,
+    pcb_housing_dimens.z-pcb_thickn-pcb_standoffs_dimens.z
+];
+pcb_small_clip_pos_z=pcb_housing_pos.z+pcb_standoffs_dimens.z+pcb_thickn;
+pcb_small_clip_positions=[
+    // The ones on the right
+    pcb_standoffs_positions[2],
+    pcb_standoffs_positions[6]
+];
+
+screw_diam=2;
+screw_pos=[9, 33];
+screw_hole_fn=6;
+
+screw_hole_rad=screw_diam*1.2/2;
+screw_rod_rad=screw_hole_rad+wall_thickn;
+screw_rod_h=pcb_housing_pos.z+pcb_standoffs_dimens.z;

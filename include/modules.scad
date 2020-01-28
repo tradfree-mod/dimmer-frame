@@ -14,4 +14,16 @@ module roundedCube(dimens, corner_radius, $fn=50) {
 	}
 }
 
+module clipDent(dimens) {
+	angle=atan2(dimens.z, dimens.y);
+
+	difference() {
+		cube(dimens);
+
+		rotate([angle])
+		translate([-1, 0])
+		cube([dimens.x*2, dimens.y*2, dimens.z*3]);
+	}
+}
+
 function swap(vector) = [vector[1], vector[0]];

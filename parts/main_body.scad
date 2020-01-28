@@ -8,33 +8,33 @@ module mainBody() {
 			union() {
 				difference() {
 					// Main body shape
-					roundedCube(main_body_dimens, main_body_corner_rad);
+					roundedCube(main_body_dimens, main_body_corner_rad, $fn=fn);
 
 					// Carve out membrane inset
 					translate(membrane_inset_pos)
-					roundedCube(membrane_inset_dimens, membrane_inset_corner_rad);
+					roundedCube(membrane_inset_dimens, membrane_inset_corner_rad, $fn=fn);
 
 					// Carve out PCB housing
 					translate(pcb_housing_pos)
-					roundedCube(pcb_housing_dimens, pcb_housing_corner_rad);
+					roundedCube(pcb_housing_dimens, pcb_housing_corner_rad, $fn=fn);
 
 					// Carve out PCB housing floor from the bottom to reduce mass
 					translate(bottom_cavity_pos)
-					roundedCube(bottom_cavity_dimens, bottom_cavity_corner_rad);
+					roundedCube(bottom_cavity_dimens, bottom_cavity_corner_rad, $fn=fn);
 
 
 					// Carve out space between outer walls and PCB housing
 					translate([0, 0, -main_body_dimens.z+membrane_inset_pos.z])
 					translate([1, 1, -1]*wall_thickn)
 					difference() {
-						roundedCube(main_body_dimens-[2, 2, 1]*wall_thickn, main_body_corner_rad-wall_thickn);
+						roundedCube(main_body_dimens-[2, 2, 1]*wall_thickn, main_body_corner_rad-wall_thickn, $fn=fn);
 
 						translate([
 							(main_body_dimens.x-4*wall_thickn-pcb_housing_dimens.x)/2,
 							(main_body_dimens.y-4*wall_thickn-pcb_housing_dimens.y)/2,
 							-1
 						])
-						roundedCube(pcb_housing_dimens+[2, 2, 10]*wall_thickn, pcb_housing_corner_rad+wall_thickn);
+						roundedCube(pcb_housing_dimens+[2, 2, 10]*wall_thickn, pcb_housing_corner_rad+wall_thickn, $fn=fn);
 					}
 
 					// UART header hole
@@ -71,13 +71,19 @@ module mainBody() {
 						main_body_dimens.x/2-membr_spacial_offset_center-membr_spacial_slots_dimens.y
 					])
 					cube(concat(membr_spacial_slots_dimens, [30]));
+
+
+					// Carve out a slot for the PCB big clip
+					translate(pcb_clip_cutoff_pos)
+					cube(pcb_clip_cutoff_dimens);
+
 				} // difference
 
 
 				// Battery housing
 				translate(battery_housing_pos)
 				translate([1, 1]*battery_housing_rad)
-				cylinder(h=battery_housing_h, r=battery_housing_rad, $fn=100);
+				cylinder(h=battery_housing_h, r=battery_housing_rad, $fn=fn);
 
 
 				// PCB standoffs
@@ -86,11 +92,17 @@ module mainBody() {
 					translate(pos)
 					cube(pcb_standoffs_dimens);
 				}
+
+
+				// Screw rod
+				translate(screw_pos)
+				cylinder(h=screw_rod_h, r=screw_rod_rad, $fn=fn);
+
 			} // union
 
 			// Button hole
 			translate(button_hole_pos)
-			cylinder(h=30, r=button_hole_rad, $fn=30);
+			cylinder(h=30, r=button_hole_rad, $fn=fn);
 
 			// SWD header hole
 			translate(swd_hole_pos)
@@ -99,7 +111,7 @@ module mainBody() {
 			// Battery hole
 			translate(battery_hole_pos)
 			translate([1, 1]*battery_hole_rad)
-			cylinder(h=30, r=battery_hole_rad, $fn=100, center=false);
+			cylinder(h=30, r=battery_hole_rad, $fn=fn, center=false);
 
 			// Battery connector gap
 			translate([
@@ -108,6 +120,10 @@ module mainBody() {
 				pcb_housing_pos.z
 			])
 			cube([battery_hole_rad, battery_hole_rad, 10]);
+
+			// Screw rod
+			translate(screw_pos)
+			cylinder(h=screw_rod_h-wall_thickn, r=screw_hole_rad, $fn=screw_hole_fn);
 
 		} // difference
 	
@@ -142,8 +158,23 @@ module mainBody() {
 				translate([0, 0, -2])
 				translate(battery_housing_pos)
 				translate([1, 1]*battery_housing_rad)
-				cylinder(h=battery_housing_h, r=battery_housing_rad, $fn=100);
+				cylinder(h=battery_housing_h, r=battery_housing_rad, $fn=fn);
 			}
+		}
+
+		// Big PCB clip
+		translate(pcb_clip_stick_pos)
+		cube(pcb_clip_stick_dimens);
+
+		#translate(pcb_clip_dent_pos)
+		rotate(pcb_clip_dent_rot)
+		clipDent(pcb_clip_dent_dimens);
+
+		// Small PCB clips
+		for(pos = pcb_small_clip_positions) {
+			translate([0, 0, pcb_small_clip_pos_z])
+			translate(pos)
+			cube(pcb_small_clip_dimens);
 		}
 
 	} // union
