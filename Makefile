@@ -4,14 +4,13 @@ SCADC=/usr/bin/openscad
 MKDIR=mkdir -p
 OUTDIR=stl
 
-all: stubs case directories
-
-stubs:
-	echo "-"
+all: directories case pogopin
 
 case: \
 	$(OUTDIR)/main.stl
 
+pogopin: \
+	$(OUTDIR)/pogo-pin.stl
 
 stl/stubs/%.stl: stubs/%.scad 
 	$(SCADC) -o $@ $<
@@ -20,7 +19,7 @@ stl/%.stl: %.scad
 	$(SCADC) -o $@ $<
 
 directories:
-	$(MKDIR) $(OUTDIR)/stubs
+	$(MKDIR) $(OUTDIR)
 
 clean:
 	rm -Rf $(OUTDIR)/*
