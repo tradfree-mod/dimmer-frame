@@ -34,7 +34,7 @@
     - Size: Y 1, Z 3
 */
 
-fn=30;
+fn=500;
 
 wall_thickn=1;
 
