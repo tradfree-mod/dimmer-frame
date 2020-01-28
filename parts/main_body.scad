@@ -105,8 +105,10 @@ module mainBody() {
 			cylinder(h=30, r=button_hole_rad, $fn=fn);
 
 			// SWD header hole
-			translate(swd_hole_pos)
-			cube(concat(swd_hole_dimens, [30]));
+			if (carve_swd_hole) {
+				translate(swd_hole_pos)
+				cube(concat(swd_hole_dimens, [30]));
+			}
 
 			// Battery hole
 			translate(battery_hole_pos)
@@ -121,7 +123,7 @@ module mainBody() {
 			])
 			cube([battery_hole_rad, battery_hole_rad, 10]);
 
-			// Screw rod
+			// Screw hole
 			translate(screw_pos)
 			cylinder(h=screw_rod_h-wall_thickn, r=screw_hole_rad, $fn=screw_hole_fn);
 
