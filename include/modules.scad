@@ -22,7 +22,7 @@ module clipDent(dimens) {
 
 		rotate([angle])
 		translate([-1, 0])
-		cube([dimens.x*2, dimens.y*2, dimens.z*3]);
+		cube([dimens.x*2, dimens.y*10, dimens.z*10]);
 	}
 }
 

@@ -127,6 +127,13 @@ module mainBody() {
 			translate(screw_pos)
 			cylinder(h=screw_rod_h-wall_thickn, r=screw_hole_rad, $fn=screw_hole_fn);
 
+			// Battery removal screwdriver dent
+			translate([0, 0, battery_housing_pos.z - 0.01])
+			translate(battery_hole_pos)
+			translate([1, 1]*battery_hole_rad)
+			rotate(battery_removal_dent_rot)
+			translate(battery_removal_dent_pos1)
+			clipDent(battery_removal_dent_size);
 		} // difference
 	
 		// Battery clips

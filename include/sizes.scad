@@ -81,6 +81,18 @@ battery_small_clips_pos1=[-battery_small_clip_dimens.x/2, -battery_hole_rad-batt
 battery_clips_rot_angle=[0, 0, 45];
 battery_clips_pos2=battery_hole_pos;
 
+battery_removal_dent_size=[
+    battery_small_clip_cutout_dimens.x,
+    wall_thickn*2,
+    battery_housing_h
+];
+
+battery_removal_dent_pos1=[
+    -battery_removal_dent_size.x/2,
+    -battery_hole_rad-battery_removal_dent_size.y/1.3 // magic number
+];
+battery_removal_dent_rot=battery_clips_rot_angle + [0, 0, 180];
+
 membr_slots_dimens=[5, 2];
 membr_spacial_slots_dimens=[1.5, 6];
 membr_spacial_offset_center=4;
