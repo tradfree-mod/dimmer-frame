@@ -9,6 +9,8 @@ solder_tip_len=1.5;
 fn=100;
 
 
+translate([0, 0, tip_len+body_len+ring_len])
+rotate([180, 0, 0])
 union() {
 	translate([0, 0, tip_len+body_len+ring_len]) {
 		cylinder(r=solder_tip_rad, h=solder_tip_len, $fn=fn);
