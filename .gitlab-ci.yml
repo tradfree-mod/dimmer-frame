@@ -1,0 +1,18 @@
+image: archlinux
+
+stages:
+  - deploy
+
+before_script:
+  - sudo pacman -Syu --noconfirm openscad make 
+
+render:
+  stage: deploy
+  script:
+  - sed -i 's/fn=.*;/fn=500;' include/sizes.scad
+  - make case case-ikea pogopin
+  artifacts:
+    paths:
+    - stl
+  only:
+  - master
