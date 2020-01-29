@@ -9,7 +9,7 @@ before_script:
 render:
   stage: deploy
   script:
-  - sed -i 's/fn=.*;/fn=500;' include/sizes.scad
+  - sed -i 's/fn=.*;/fn=500;/g' include/sizes.scad
   - make directories case case-ikea pogopin
   artifacts:
     paths:
