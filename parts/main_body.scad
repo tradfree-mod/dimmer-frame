@@ -134,6 +134,64 @@ module mainBody() {
 			rotate(battery_removal_dent_rot)
 			translate(battery_removal_dent_pos1)
 			clipDent(battery_removal_dent_size);
+
+
+			// Hinges holes
+			translate([
+				main_body_dimens.x/2,
+				main_body_dimens.y-wall_thickn/2,
+				hinges_hole_z+hinges_hole_rad
+			])
+			rotate([0, 90, 90])
+			cylinder(h=wall_thickn, r=hinges_hole_rad, center=true, $fn=fn);
+
+			translate([
+				main_body_dimens.x/2,
+				wall_thickn/2,
+				hinges_hole_z+hinges_hole_rad
+			])
+			rotate([0, 90, 90])
+			cylinder(h=wall_thickn, r=hinges_hole_rad, center=true, $fn=fn);
+
+			// Hinges holes guides
+			translate([
+				main_body_dimens.x/2,
+				main_body_dimens.y-hinges_hole_guide_thickn/2,
+				hinges_hole_z+hinges_hole_rad
+			])
+			rotate([0, 90, 90])
+			hingeGuide(
+			    hinges_hole_rad,
+			    hinges_hole_guide_rad_top,
+			    hinges_hole_guide_thickn,
+			    4,
+			    center=true,
+			    $fn=fn
+			);
+
+			translate([
+				main_body_dimens.x/2,
+				hinges_hole_guide_thickn/2,
+				hinges_hole_z+hinges_hole_rad
+			])
+			rotate([0, 90, 90])
+			hingeGuide(
+			    hinges_hole_rad,
+			    hinges_hole_guide_rad_top,
+			    hinges_hole_guide_thickn,
+			    4,
+			    center=true,
+			    $fn=fn
+			);
+
+			// Alignment notches
+			translate(alignment_notch_pos)
+			cube(alignment_notch_dimens);
+
+			translate([0,  main_body_dimens.y - alignment_notch_dimens.y])
+			translate(alignment_notch_pos)
+			cube(alignment_notch_dimens);
+
 		} // difference
 	
 		// Battery clips

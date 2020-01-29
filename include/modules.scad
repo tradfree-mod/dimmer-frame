@@ -26,4 +26,13 @@ module clipDent(dimens) {
 	}
 }
 
+module hingeGuide(r1, r2, h, dist, center=false, $fn=50) {
+	hull() {
+		cylinder(r=r1, h=h, $fn=$fn, center=center);
+
+		translate([-dist, 0])
+		cylinder(r=r2, h=h, $fn=$fn, center=center);
+	}
+}
+
 function swap(vector) = [vector[1], vector[0]];

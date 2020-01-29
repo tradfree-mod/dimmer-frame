@@ -160,3 +160,21 @@ screw_hole_fn=6;
 screw_hole_rad=screw_diam*1.2/2;
 screw_rod_rad=screw_hole_rad+wall_thickn;
 screw_rod_h=pcb_housing_pos.z+pcb_standoffs_dimens.z;
+
+
+hinges_hole_rad=1.5;
+hinges_hole_z=3.2;
+
+hinges_hole_guide_rad_top=2;
+hinges_hole_guide_thickn=0.5;
+
+alignment_notch_dimens=[
+    3,
+    wall_thickn + 0.08,
+    3
+];
+alignment_notch_pos=[
+    main_body_dimens.x/2 - 8.5,
+    0,
+    main_body_dimens.z - alignment_notch_dimens.z
+];
