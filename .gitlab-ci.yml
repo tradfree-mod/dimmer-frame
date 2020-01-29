@@ -1,10 +1,7 @@
-image: archlinux
+image: depau/openscad:latest
 
 stages:
   - deploy
-
-before_script:
-  - pacman -Syu --noconfirm openscad make 
 
 render:
   stage: deploy
