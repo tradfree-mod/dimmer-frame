@@ -4,7 +4,7 @@ stages:
   - deploy
 
 before_script:
-  - sudo pacman -Syu --noconfirm openscad make 
+  - pacman -Syu --noconfirm openscad make 
 
 render:
   stage: deploy
