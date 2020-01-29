@@ -7,7 +7,10 @@ OUTDIR=stl
 all: directories case pogopin
 
 case: \
-	$(OUTDIR)/main.stl
+	$(OUTDIR)/bottom-case.stl
+
+case-ikea: \
+	$(OUTDIR)/bottom-case-ikea.stl
 
 pogopin: \
 	$(OUTDIR)/pogo-pin.stl
@@ -25,4 +28,4 @@ clean:
 	rm -Rf $(OUTDIR)/*
 
 .PHONY : clean directories
-.DEFAULT : all
+.DEFAULT : case
