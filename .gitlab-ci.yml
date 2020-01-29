@@ -10,7 +10,7 @@ render:
   stage: deploy
   script:
   - sed -i 's/fn=.*;/fn=500;' include/sizes.scad
-  - make case case-ikea pogopin
+  - make directories case case-ikea pogopin
   artifacts:
     paths:
     - stl
