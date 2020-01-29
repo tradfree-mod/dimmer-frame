@@ -96,6 +96,8 @@ battery_removal_dent_rot=battery_clips_rot_angle + [0, 0, 180];
 membr_slots_dimens=[5, 2];
 membr_spacial_slots_dimens=[1.5, 6];
 membr_spacial_offset_center=4;
+lid_clips_slot_z=1.3;
+lid_clips_slot_dimens=[0.5, membr_spacial_slots_dimens.y, main_body_dimens.z-lid_clips_slot_z];
 
 
 pcb_thickn=1.2; // just to be on the safe side

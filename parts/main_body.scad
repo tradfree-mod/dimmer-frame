@@ -72,6 +72,20 @@ module mainBody() {
 					])
 					cube(concat(membr_spacial_slots_dimens, [30]));
 
+					// Lid clip slots
+					translate([
+						wall_thickn-lid_clips_slot_dimens.x/2,
+						main_body_dimens.x/2+membr_spacial_offset_center,
+						lid_clips_slot_z
+					])
+					cube(lid_clips_slot_dimens);
+
+					translate([
+						wall_thickn-lid_clips_slot_dimens.x/2,
+						main_body_dimens.x/2-membr_spacial_offset_center-lid_clips_slot_dimens.y,
+						lid_clips_slot_z
+					])
+					cube(lid_clips_slot_dimens);
 
 					// Carve out a slot for the PCB big clip
 					translate(pcb_clip_cutoff_pos)
