@@ -14,7 +14,7 @@ membrane_inset_pos=[
 ];
 membrane_inset_corner_rad=10;
 
-pcb_housing_dimens=[33.4, 33.4, 4.5];
+pcb_housing_dimens=[34, 34, 4.5];
 pcb_housing_pos=[
     (main_body_dimens.x-pcb_housing_dimens.x)/2,
     (main_body_dimens.y-pcb_housing_dimens.y)/2,
@@ -180,3 +180,8 @@ alignment_notch_pos=[
     0,
     main_body_dimens.z - alignment_notch_dimens.z
 ];
+
+
+// Lid sizes
+
+//lid_dimens=[main_body_dimens.x, main_body_dimens.y, ]
