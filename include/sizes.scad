@@ -141,24 +141,6 @@ pcb_small_clip_positions=[
     pcb_standoffs_positions[6]
 ];
 
-screw_diam=2;
-
-// For custom bottom lid
-screw_pos=[9, 33];
-
-// For IKEA original bottom lid
-/*
-screw_pos=[
-    33.5,
-    main_body_dimens.y/2
-];
-*/
-
-// Set to false if you want to use it with the IKEA bottom lid
-carve_swd_hole=true;
-
-screw_hole_fn=6;
-
 screw_hole_rad=screw_diam*1.2/2;
 screw_rod_rad=screw_hole_rad+wall_thickn;
 screw_rod_h=pcb_housing_pos.z+pcb_standoffs_dimens.z;
