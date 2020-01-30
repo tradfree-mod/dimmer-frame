@@ -106,7 +106,32 @@ module mainBodySupportsHardcore() {
 			translate([1, 1]*battery_hole_rad)
 			rotate(battery_clips_rot_angle)
 			translate(battery_big_clip_pos1 + [0, battery_big_clip_dimens.y - 1])
-			cubicSupport([battery_big_clip_dimens.x, 1, 50]);
+			translate([battery_big_clip_dimens.x, 0, 10-supports_thickn])
+			rotate([0, 0, 90])
+			mirror([0, 0, 1])
+			bridgeSupport([3, battery_big_clip_dimens.x], 10);
+
+			// Battery small clips
+			translate([0, 0, battery_big_clip_dimens.z + supports_contanct_z_dist])
+			translate(battery_hole_pos)
+			translate([1, 1]*battery_hole_rad)
+			rotate(battery_clips_rot_angle + [0, 0, 180])
+			translate(battery_small_clips_pos1 + [0, battery_small_clip_dimens.y])
+			translate([battery_small_clip_width, -1, 10-supports_thickn])
+			rotate([0, 0, 90])
+			mirror([0, 0, 1])
+			bridgeSupport([3, battery_small_clip_width], 10);
+
+						// Battery small clips
+			translate([0, 0, battery_big_clip_dimens.z + supports_contanct_z_dist])
+			translate(battery_hole_pos)
+			translate([1, 1]*battery_hole_rad)
+			rotate(battery_clips_rot_angle + [0, 0, 180])
+			translate(battery_small_clips_pos1 + [battery_small_clip_dimens.x - battery_small_clip_width, battery_small_clip_dimens.y])
+			translate([battery_small_clip_width, -1, 10-supports_thickn])
+			rotate([0, 0, 90])
+			mirror([0, 0, 1])
+			bridgeSupport([3, battery_small_clip_width], 10);
 
 			// Membrane + slots inset
 			translate([0, 0, membrane_inset_pos.z + supports_contanct_z_dist]) {
