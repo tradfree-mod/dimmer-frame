@@ -7,9 +7,11 @@ render:
   stage: deploy
   script:
   - sed -i 's/^fn=.*;$/fn=500;/g' include/sizes.scad
-  - make -j3 directories case case-ikea pogopin
+  - make -j4 directories case case-ikea pogopin
+  - make -j4 SCADC_FLAGS="-Dbuild_supports=true" OUTDIR="stl-withsupports" directories case case-ikea
   artifacts:
     paths:
     - stl
+    - stl-withsupports
   only:
   - master
