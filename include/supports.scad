@@ -17,6 +17,23 @@ module cubicSupport(dimens, hole=false) {
 	}
 }
 
+module roundedCubeSupport(dimens, corner_radius, $fn=50, hole=false) {
+	actual_dimens=hole
+		? dimens + [supports_thickn, supports_thickn, 0]
+		: dimens;
+	offset=hole
+		? -[supports_thickn, supports_thickn]
+		: [0, 0];
+
+	translate(offset)
+	difference() {
+		roundedCube(actual_dimens, corner_radius, $fn=$fn);
+
+		translate([1, 1, -1]*supports_thickn)
+		roundedCube(actual_dimens - [2, 2, -2]*supports_thickn, corner_radius-supports_thickn, $fn=$fn);
+	}
+}
+
 module circularSupport(r=undef, d=undef, h=undef, $fn=undef, hole=false) {
 	actual_r=hole
 		? r+supports_thickn
@@ -36,6 +53,39 @@ module circularSupport(r=undef, d=undef, h=undef, $fn=undef, hole=false) {
 			$fn=$fn
 		);
 	}
+}
+
+module doubleCircularSupport(r=undef, d=undef, h=undef, thickn=1, $fn=undef) {
+	difference() {
+		difference() {
+			cylinder(r=r, d=d, h=h, $fn=$fn);
+			translate([0, 0, -.5])
+			cylinder(r=r-2*supports_thickn-thickn, d=d-4*supports_thickn-2*thickn, h=h+1, $fn=$fn);
+		}
+
+		translate([0, 0, -1])
+		difference() {
+			cylinder(r=r-supports_thickn, d=d-2*supports_thickn, h=h-supports_thickn+1, $fn=$fn);
+			translate([0, 0, -1])
+			cylinder(r=r-supports_thickn-thickn, d=d-2*supports_thickn-2*thickn, h=h-supports_thickn+2, $fn=$fn);
+		}
+	}
+}
+
+module arcSupport(r=undef, d=undef, angle=undef, h=undef, $fn=undef, hole=false) {
+	actual_r=hole
+		? r+supports_thickn
+		: r;
+	actual_d=hole
+		? d+2*supports_thickn
+		: d;
+	offset=actual_r == undef
+		? actual_d/2
+		: actual_r;
+
+	rotate_extrude(angle=angle, $fn=fn)
+	translate([offset, 0])
+	square([supports_thickn, h]);
 }
 
 module squareSupport(dimens) {

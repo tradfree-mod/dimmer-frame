@@ -1,7 +1,7 @@
 include <../config.scad>
 include <../include/modules.scad>
 include <../include/sizes.scad>
-include <../include/supports.scad>
+include <main_body_supports.scad>
 
 module mainBody() {
 	union() {
@@ -262,100 +262,10 @@ module mainBody() {
 			cube(pcb_small_clip_dimens);
 		}
 
-
-		// 3D printing supports
-		if (build_supports) {
-			// SWD header hole
-			if (carve_swd_hole) {
-				translate([swd_hole_pos.x, swd_hole_pos.y])
-				cubicSupport([
-					swd_hole_dimens.x,
-					swd_hole_dimens.y,
-					bottom_cavity_dimens.z-supports_contanct_z_dist
-				], hole=true);
-			}
-
-			// UART header hole
-			translate([uart_hole_pos.x, uart_hole_pos.y])
-			cubicSupport([
-				uart_hole_dimens.x,
-				uart_hole_dimens.y,
-				bottom_cavity_dimens.z-supports_contanct_z_dist
-			], hole=true);
-
-			// Button hole
-			translate([button_hole_pos.x, button_hole_pos.y])
-			circularSupport(
-				r=button_hole_rad,
-				h=bottom_cavity_dimens.z-supports_contanct_z_dist,
-				$fn=fn,
-				hole=true
-			);
-
-			// Battery housing
-			translate([battery_housing_pos.x, battery_housing_pos.y])
-			translate([1, 1]*battery_housing_rad)
-			circularSupport(
-				r=battery_housing_rad,
-				h=battery_housing_pos.z-supports_contanct_z_dist,
-				$fn=fn
-			);
-
-			// Battery hole
-			translate([battery_hole_pos.x, battery_hole_pos.y])
-			translate([1, 1]*battery_hole_rad)
-			circularSupport(
-				r=battery_hole_rad,
-				h=battery_housing_pos.z-supports_contanct_z_dist,
-				$fn=fn,
-				hole=true
-			);
-
-			// Big PCB clip
-			translate([
-				pcb_clip_dent_pos.x-pcb_clip_dent_dimens.y,
-				pcb_clip_dent_pos.y,
-				pcb_housing_pos.z + supports_contanct_z_dist
-			])
-			bridgeSupport(
-				bridge_dimens=[
-					pcb_clip_dent_dimens.y+1,
-					pcb_clip_dent_dimens.x
-				],
-				h=pcb_clip_dent_pos.z-pcb_housing_pos.z-supports_contanct_z_dist
-			);
-
-			// Small PCB clip (bottom)
-
-			// Ditch SWD hole if carved
-			bridge_offset=carve_swd_hole
-				? swd_hole_dimens.x
-				: 0;
-
-			translate([0, 0, pcb_housing_pos.z + supports_contanct_z_dist])
-			translate(pcb_small_clip_positions[0] + [pcb_small_clip_dimens.x, 0])
-			mirror([1, 0, 0])
-			bridgeSupport(
-				bridge_dimens=[
-					pcb_small_clip_dimens.x+1.5+bridge_offset,
-					pcb_small_clip_dimens.y
-				],
-				h=pcb_small_clip_pos_z-pcb_housing_pos.z-supports_contanct_z_dist,
-				pillar_w=1
-			);
-			
-			// Small PCB clip (top)
-			translate([0, 0, pcb_housing_pos.z + supports_contanct_z_dist])
-			translate(pcb_small_clip_positions[1] + [pcb_small_clip_dimens.x, 0])
-			mirror([1, 0, 0])
-			bridgeSupport(
-				bridge_dimens=[
-					pcb_small_clip_dimens.x+1.5,
-					pcb_small_clip_dimens.y
-				],
-				h=pcb_small_clip_pos_z-pcb_housing_pos.z-supports_contanct_z_dist,
-				pillar_w=1
-			);
+		if (build_supports == "hardcore") {
+			mainBodySupportsHardcore();
+		} else if (build_supports == "easy") {
+			mainBodySupportsEasy();
 		}
 
 	} // union

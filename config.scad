@@ -8,6 +8,7 @@ carve_swd_hole=true;
 
 screw_hole_fn=6;
 
-build_supports=false;
+build_supports="easy";
+
 supports_thickn=0.2;
 supports_contanct_z_dist=0.2; // detachable (hopefully)
