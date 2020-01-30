@@ -1,6 +1,7 @@
 #!/usr/bin/make
 
 SCADC=/usr/bin/openscad
+SCADC_FLAGS=""
 MKDIR=mkdir -p
 OUTDIR=stl
 
@@ -16,10 +17,10 @@ pogopin: \
 	$(OUTDIR)/pogo-pin.stl
 
 stl/stubs/%.stl: stubs/%.scad 
-	$(SCADC) -o $@ $<
+	$(SCADC) $(SCADC_FLAGS) -o $@ $<
 
 stl/%.stl: %.scad 
-	$(SCADC) -o $@ $<
+	$(SCADC) $(SCADC_FLAGS) -o $@ $<
 
 directories:
 	$(MKDIR) $(OUTDIR)
