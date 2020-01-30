@@ -13,15 +13,16 @@ module mainBody() {
 
 					// Carve out membrane inset
 					translate(membrane_inset_pos)
-					roundedCube(membrane_inset_dimens, membrane_inset_corner_rad, $fn=fn);
+					roundedCube(membrane_inset_dimens + [0, 0, 1], membrane_inset_corner_rad, $fn=fn);
 
 					// Carve out PCB housing
 					translate(pcb_housing_pos)
-					roundedCube(pcb_housing_dimens, pcb_housing_corner_rad, $fn=fn);
+					roundedCube(pcb_housing_dimens + [0, 0, 1], pcb_housing_corner_rad, $fn=fn);
 
 					// Carve out PCB housing floor from the bottom to reduce mass
+					translate(-[0, 0, 1])
 					translate(bottom_cavity_pos)
-					roundedCube(bottom_cavity_dimens, bottom_cavity_corner_rad, $fn=fn);
+					roundedCube(bottom_cavity_dimens + [0, 0, 1], bottom_cavity_corner_rad, $fn=fn);
 
 
 					// Carve out space between outer walls and PCB housing
@@ -90,7 +91,7 @@ module mainBody() {
 
 					// Carve out a slot for the PCB big clip
 					translate(pcb_clip_cutoff_pos)
-					cube(pcb_clip_cutoff_dimens);
+					cube(pcb_clip_cutoff_dimens + [1, 0, 1]);
 
 				} // difference
 
@@ -139,8 +140,9 @@ module mainBody() {
 			cube([battery_hole_rad, battery_hole_rad, 10]);
 
 			// Screw hole
+			translate(-[0, 0, 1])
 			translate(screw_pos)
-			cylinder(h=screw_rod_h-wall_thickn, r=screw_hole_rad, $fn=screw_hole_fn);
+			cylinder(h=screw_rod_h-wall_thickn+1, r=screw_hole_rad, $fn=screw_hole_fn);
 
 			// Battery removal screwdriver dent
 			translate([0, 0, battery_housing_pos.z - 0.01])
@@ -158,7 +160,7 @@ module mainBody() {
 				hinges_hole_z+hinges_hole_rad
 			])
 			rotate([0, 90, 90])
-			cylinder(h=wall_thickn, r=hinges_hole_rad, center=true, $fn=fn);
+			cylinder(h=wall_thickn+1, r=hinges_hole_rad, center=true, $fn=fn);
 
 			translate([
 				main_body_dimens.x/2,
@@ -166,19 +168,19 @@ module mainBody() {
 				hinges_hole_z+hinges_hole_rad
 			])
 			rotate([0, 90, 90])
-			cylinder(h=wall_thickn, r=hinges_hole_rad, center=true, $fn=fn);
+			cylinder(h=wall_thickn+1, r=hinges_hole_rad, center=true, $fn=fn);
 
 			// Hinges holes guides
 			translate([
 				main_body_dimens.x/2,
-				main_body_dimens.y-hinges_hole_guide_thickn/2,
+				main_body_dimens.y-hinges_hole_guide_thickn/2 + .5,
 				hinges_hole_z+hinges_hole_rad
 			])
 			rotate([0, 90, 90])
 			hingeGuide(
 			    hinges_hole_rad,
 			    hinges_hole_guide_rad_top,
-			    hinges_hole_guide_thickn,
+			    hinges_hole_guide_thickn + 1,
 			    4,
 			    center=true,
 			    $fn=fn
@@ -186,26 +188,26 @@ module mainBody() {
 
 			translate([
 				main_body_dimens.x/2,
-				hinges_hole_guide_thickn/2,
+				hinges_hole_guide_thickn/2 - .5,
 				hinges_hole_z+hinges_hole_rad
 			])
 			rotate([0, 90, 90])
 			hingeGuide(
 			    hinges_hole_rad,
 			    hinges_hole_guide_rad_top,
-			    hinges_hole_guide_thickn,
+			    hinges_hole_guide_thickn + 1,
 			    4,
 			    center=true,
 			    $fn=fn
 			);
 
 			// Alignment notches
-			translate(alignment_notch_pos)
-			cube(alignment_notch_dimens);
+			translate(alignment_notch_pos - [0, 1, 0])
+			cube(alignment_notch_dimens + [0, 1, 1]);
 
 			translate([0,  main_body_dimens.y - alignment_notch_dimens.y])
 			translate(alignment_notch_pos)
-			cube(alignment_notch_dimens);
+			cube(alignment_notch_dimens + [0, 1, 1]);
 
 		} // difference
 	
@@ -227,8 +229,9 @@ module mainBody() {
 				difference() {
 					cube(battery_small_clip_dimens);
 
+					translate(-[0, .5, .5])
 					translate([(battery_small_clip_dimens.x-battery_small_clip_cutout_dimens.x)/2, 0])
-					cube(battery_small_clip_cutout_dimens);
+					cube(battery_small_clip_cutout_dimens + [0, 1, 1]);
 				}
 
 			}
