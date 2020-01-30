@@ -16,10 +16,10 @@ case-ikea: \
 pogopin: \
 	$(OUTDIR)/pogo-pin.stl
 
-stl/stubs/%.stl: stubs/%.scad 
+$(OUTDIR)/stubs/%.stl: stubs/%.scad 
 	$(SCADC) $(SCADC_FLAGS) -o $@ $<
 
-stl/%.stl: %.scad 
+$(OUTDIR)/%.stl: %.scad 
 	$(SCADC) $(SCADC_FLAGS) -o $@ $<
 
 directories:
