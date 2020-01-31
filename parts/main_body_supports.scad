@@ -21,7 +21,7 @@ module mainBodySupportsHardcore() {
 			//bridgeSupport(bridge_dimens, h, pillar_w=1) {
 			// PCB standoffs
 			for(pos = pcb_standoffs_positions) {
-				angle=(pos.x < 10)
+				angle=(pos.x < 5)
 					? 0
 					: (pos.x > 35)
 					? 180

@@ -14,7 +14,7 @@ membrane_inset_pos=[
 ];
 membrane_inset_corner_rad=10;
 
-pcb_housing_dimens=[34, 34, 4.5];
+pcb_housing_dimens=[35, 35, 4.5];
 pcb_housing_pos=[
     (main_body_dimens.x-pcb_housing_dimens.x)/2,
     (main_body_dimens.y-pcb_housing_dimens.y)/2,
@@ -101,7 +101,7 @@ lid_clips_slot_z=1.3;
 lid_clips_slot_dimens=[0.5, membr_spacial_slots_dimens.y, main_body_dimens.z-lid_clips_slot_z];
 
 
-pcb_thickn=1.2; // just to be on the safe side
+pcb_thickn=1.5; // just to be on the safe side
 pcb_clip_h=1.5;
 
 pcb_clip_stick_dimens=[.7, 4, 5-pcb_clip_h];
