@@ -81,9 +81,9 @@ module mainBodySupportsHardcore() {
 			translate([1, 1]*battery_housing_rad)
 			mirror([0, 0, 1])
 			doubleCircularSupport(
-				r=battery_housing_rad+0.5,
+				r=battery_housing_rad,
 				h=10,
-				thickn=battery_housing_rad-battery_hole_rad+0.5,
+				thickn=battery_housing_rad-battery_hole_rad,
 				$fn=fn
 			);
 
@@ -95,7 +95,7 @@ module mainBodySupportsHardcore() {
 			arcSupport(
 				r=battery_hole_rad,
 				h=50,
-				angle=70,
+				angle=360,
 				$fn=fn,
 				hole=true
 			);

@@ -56,20 +56,8 @@ module circularSupport(r=undef, d=undef, h=undef, $fn=undef, hole=false) {
 }
 
 module doubleCircularSupport(r=undef, d=undef, h=undef, thickn=1, $fn=undef) {
-	difference() {
-		difference() {
-			cylinder(r=r, d=d, h=h, $fn=$fn);
-			translate([0, 0, -.5])
-			cylinder(r=r-2*supports_thickn-thickn, d=d-4*supports_thickn-2*thickn, h=h+1, $fn=$fn);
-		}
-
-		translate([0, 0, -1])
-		difference() {
-			cylinder(r=r-supports_thickn, d=d-2*supports_thickn, h=h-supports_thickn+1, $fn=$fn);
-			translate([0, 0, -1])
-			cylinder(r=r-supports_thickn-thickn, d=d-2*supports_thickn-2*thickn, h=h-supports_thickn+2, $fn=$fn);
-		}
-	}
+	circularSupport(r=r, d=d, h=h, $fn=$fn);
+	circularSupport(r=r-thickn, d=d-thickn*2, h=h, $fn=$fn);
 }
 
 module arcSupport(r=undef, d=undef, angle=undef, h=undef, $fn=undef, hole=false) {
