@@ -74,10 +74,10 @@ battery_housing_pos=concat(
 );
 
 battery_big_clip_dimens=[7, 4, 1];
-battery_small_clip_dimens=[9, 2.3, 1];
+battery_small_clip_dimens=[9, 1.8, 1];
 battery_small_clip_cutout_dimens=[battery_small_clip_dimens.x-3, 2.3, 1];
 battery_big_clip_pos1=[-battery_big_clip_dimens.x/2, -battery_hole_rad-battery_big_clip_dimens.y/4];
-battery_small_clips_pos1=[-battery_small_clip_dimens.x/2, -battery_hole_rad-battery_small_clip_dimens.y/4];
+battery_small_clips_pos1=[-battery_small_clip_dimens.x/2, -battery_hole_rad-battery_small_clip_dimens.y/4-0.2];
 battery_clips_rot_angle=[0, 0, 45];
 battery_clips_pos2=battery_hole_pos;
 battery_small_clip_width=(battery_small_clip_dimens.x-battery_small_clip_cutout_dimens.x)/2;
