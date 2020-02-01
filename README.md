@@ -49,7 +49,9 @@ it to `"none"`, or with `make` by passing
 `'-Dbuild_supports="easy/hardcore"'` (yes you need the quotation marks)
 
 Under [/img](/img) you can find a preview of the supports (in cyan)
-that you can use as reference for removal.
+that you can use as reference for removal. Be careful because OpenSCAD
+colored the bottom of the battery clips cyan but they're not to be
+removed.
 
 ### Important
 
