@@ -1,7 +1,7 @@
 #!/usr/bin/make
 
 SCADC=/usr/bin/openscad
-SCADC_FLAGS=""
+SCADC_FLAGS=
 MKDIR=mkdir -p
 OUTDIR=stl
 
