@@ -1,5 +1,7 @@
 # IKEA TRÅDFRI dimmer 3D-printable frame
 
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/tradfree/dimmer-frame?label=render)](https://gitlab.com/tradfree/dimmer-frame/-/jobs) [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-cc%20by--sa%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 This is a 3D-printable replica of the IKEA lights dimmer frame.
 
 There are two configations:
