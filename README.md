@@ -48,6 +48,9 @@ Supports can either be enabled in `config.scad` by setting
 it to `"none"`, or with `make` by passing
 `'-Dbuild_supports="easy/hardcore"'` (yes you need the quotation marks)
 
+Under [/img](/img) you can find a preview of the supports (in cyan)
+that you can use as reference for removal.
+
 ### Important
 
 The build does **not** flip the model if you build it with "hardcore"
