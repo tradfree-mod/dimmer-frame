@@ -89,9 +89,9 @@ module mainBody() {
 					])
 					cube(lid_clips_slot_dimens);
 
-					// Carve out a slot for the PCB big clip
-					translate(pcb_clip_cutoff_pos)
-					cube(pcb_clip_cutoff_dimens + [1, 0, 1]);
+					// Carve out the PCB holder hole
+					translate(pcb_holder_hole_pos - [.5, 0, 0])
+					cube(pcb_holder_hole_dimens + [1, 0, 0]);
 
 				} // difference
 
@@ -247,13 +247,9 @@ module mainBody() {
 			}
 		}
 
-		// Big PCB clip
-		translate(pcb_clip_stick_pos)
-		cube(pcb_clip_stick_dimens);
-
-		translate(pcb_clip_dent_pos)
-		rotate(pcb_clip_dent_rot)
-		clipDent(pcb_clip_dent_dimens);
+		// PCB holder stopper
+		translate(pcb_holder_stopper_pos)
+		cube(pcb_holder_stopper_dimens);
 
 		// Small PCB clips
 		for(pos = pcb_small_clip_positions) {

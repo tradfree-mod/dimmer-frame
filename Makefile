@@ -5,13 +5,16 @@ SCADC_FLAGS=""
 MKDIR=mkdir -p
 OUTDIR=stl
 
-all: directories case pogopin
+all: directories case pcb-holder
 
 case: \
 	$(OUTDIR)/bottom-case.stl
 
 case-ikea: \
 	$(OUTDIR)/bottom-case-ikea.stl
+
+pcb-holder: \
+	$(OUTDIR)/pcb-holder.stl
 
 pogopin: \
 	$(OUTDIR)/pogo-pin.stl

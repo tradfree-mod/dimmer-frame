@@ -205,20 +205,6 @@ module mainBodySupportsEasy() {
 			hole=true
 		);
 
-		// Big PCB clip
-		translate([
-			pcb_clip_dent_pos.x-pcb_clip_dent_dimens.y,
-			pcb_clip_dent_pos.y,
-			pcb_housing_pos.z + supports_contanct_z_dist
-		])
-		bridgeSupport(
-			bridge_dimens=[
-				pcb_clip_dent_dimens.y+1,
-				pcb_clip_dent_dimens.x
-			],
-			h=pcb_clip_dent_pos.z-pcb_housing_pos.z-supports_contanct_z_dist
-		);
-
 		// Small PCB clip (bottom)
 
 		// Ditch SWD hole if carved

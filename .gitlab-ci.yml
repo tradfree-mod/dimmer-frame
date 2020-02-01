@@ -7,7 +7,8 @@ render:
   stage: deploy
   script:
   - sed -i 's/^fn=.*;$/fn=100;/g' include/sizes.scad
-  - make -j4 SCADC_FLAGS='-Dbuild_supports=\"none\"' OUTDIR="no-supports" directories case case-ikea pogopin &
+  - make -j4 OUTDIR=other pcb-holder pogopin &
+  - make -j4 SCADC_FLAGS='-Dbuild_supports=\"none\"' OUTDIR="no-supports" directories case case-ikea &
   - make -j4 SCADC_FLAGS='-Dbuild_supports=\"easy\"' OUTDIR="supports-easy" directories case case-ikea &
   - make -j4 SCADC_FLAGS='-Dbuild_supports=\"hardcore\"' OUTDIR="supports-hardcore" directories case case-ikea &
   - wait
@@ -16,5 +17,6 @@ render:
     - no-supports
     - supports-easy
     - supports-hardcore
+    - other
   only:
   - master

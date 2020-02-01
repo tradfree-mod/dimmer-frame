@@ -1,3 +1,5 @@
+include <../config.scad>
+
 fn=30;
 
 wall_thickn=1;
@@ -101,7 +103,7 @@ lid_clips_slot_z=1.3;
 lid_clips_slot_dimens=[0.5, membr_spacial_slots_dimens.y, main_body_dimens.z-lid_clips_slot_z];
 
 
-pcb_thickn=1.5; // just to be on the safe side
+pcb_thickn=1.4; // just to be on the safe side
 pcb_clip_h=2;
 
 pcb_small_clip_dimens=[
@@ -116,30 +118,34 @@ pcb_small_clip_positions=[
     pcb_standoffs_positions[6]
 ];
 
-pcb_clip_stick_dimens=[.7, 4, pcb_small_clip_pos_z-pcb_housing_pos.z];
-pcb_clip_stick_pos=[
-    pcb_housing_pos.x-pcb_clip_stick_dimens.x,
-    main_body_dimens.y/2-pcb_clip_stick_dimens.y/2,
-    pcb_housing_pos.z
+pcb_holder_stopper_dimens=[
+    1.5,
+    5,
+    membrane_inset_dimens.z
 ];
 
-pcb_clip_dent_dimens=[
-    pcb_clip_stick_dimens.y,
-    pcb_clip_stick_dimens.x*3,
-    pcb_clip_h
-];
-pcb_clip_dent_rot=[0, 0, 90];
-pcb_clip_dent_pos=[
-    pcb_clip_stick_pos.x+pcb_clip_dent_dimens.y,
-    pcb_clip_stick_pos.y,
-    pcb_clip_stick_pos.z+pcb_clip_stick_dimens.z
+pcb_holder_stopper_pos=[
+    pcb_housing_pos.x-pcb_holder_stopper_dimens.x,
+    (main_body_dimens.y-pcb_holder_stopper_dimens.y)/2,
+    membrane_inset_pos.z
 ];
 
-pcb_clip_cutoff_dimens=[3, pcb_clip_stick_dimens.y+2, pcb_housing_dimens.z];
-pcb_clip_cutoff_pos=[
-    pcb_housing_pos.x-pcb_clip_cutoff_dimens.x,
-    main_body_dimens.y/2-pcb_clip_cutoff_dimens.y/2,
-    membrane_inset_pos.z-pcb_clip_cutoff_dimens.z
+pcb_holder_hole_dimens=[
+    (main_body_dimens.x-pcb_housing_dimens.x)/2,
+    4,
+    membrane_inset_pos.z-pcb_housing_pos.z-pcb_thickn-pcb_standoffs_dimens.z
+];
+
+pcb_holder_dimens=[
+    5.6,
+    pcb_holder_hole_dimens.y - .3,
+    pcb_holder_hole_dimens.z - .3
+];
+
+pcb_holder_hole_pos=[
+    0,
+    (main_body_dimens.y-pcb_holder_hole_dimens.y)/2,
+    pcb_housing_pos.z+pcb_standoffs_dimens.z+pcb_thickn
 ];
 
 screw_hole_rad=screw_diam*1.2/2;
