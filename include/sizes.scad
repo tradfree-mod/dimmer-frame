@@ -63,7 +63,7 @@ uart_hole_dimens=[4.7, 4.7];
 uart_hole_pos=[8.5, 10];
 
 
-battery_hole_rad=20.8/2;
+battery_hole_rad=21.5/2;
 battery_hole_pos=[9.4, 12.9];
 
 battery_housing_rad=battery_hole_rad+wall_thickn;
