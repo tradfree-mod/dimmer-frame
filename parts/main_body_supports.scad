@@ -122,7 +122,7 @@ module mainBodySupportsHardcore() {
 			mirror([0, 0, 1])
 			bridgeSupport([3, battery_small_clip_width], 10);
 
-						// Battery small clips
+			// Battery small clips
 			translate([0, 0, battery_big_clip_dimens.z + supports_contanct_z_dist])
 			translate(battery_hole_pos)
 			translate([1, 1]*battery_hole_rad)
@@ -144,17 +144,6 @@ module mainBodySupportsHardcore() {
 				translate([pcb_housing_pos.x, pcb_housing_pos.y] - [3, 3]/2)
 				roundedCubeSupport(pcb_housing_dimens + [3, 3, 50], pcb_housing_corner_rad+1.5, $fn=fn);
 			}
-
-			// Alignment notches
-			translate([0, 0, alignment_notch_pos.z + supports_contanct_z_dist])		
-			translate([alignment_notch_pos.x + .5, alignment_notch_pos.y, 0])
-			cubicSupport(alignment_notch_dimens + [-1, 0, 50]);
-
-			translate([0, 0, alignment_notch_pos.z + supports_contanct_z_dist])
-			translate([0,  main_body_dimens.y - alignment_notch_dimens.y])
-			translate([alignment_notch_pos.x + .5, alignment_notch_pos.y, 0])
-			cubicSupport(alignment_notch_dimens + [-1, 0, 50]);
-
 
 			// Screw rod
 			translate([0, 0, screw_rod_h + supports_contanct_z_dist])
