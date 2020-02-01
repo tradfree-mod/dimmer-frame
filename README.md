@@ -53,6 +53,9 @@ that you can use as reference for removal. Be careful because OpenSCAD
 colored the bottom of the battery clips cyan but they're not to be
 removed.
 
+Also beware that the bridge-y supports are supposed to be clipped off,
+not to be torn off. Cut them off with a clipper.
+
 ### Important
 
 The build does **not** flip the model if you build it with "hardcore"
