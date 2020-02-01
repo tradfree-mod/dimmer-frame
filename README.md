@@ -77,6 +77,26 @@ it would generate spaghetti.
 - Set fan to always, 100%, if available
 - Remember to rotate the model if using "hardcore" supports
 
+## Troubleshooting
+
+### Screw hole is too wide/tight
+
+Tweak it in `config.scad`
+
+### Can't push battery in
+
+Make sure you've scraped the supports away well enough. Insert the battery
+from the PCB side: it must be flush with the battery housing on the other
+side.
+
+You can tweak the battery clip sizes in `include/sizes.scad`, change
+`battery_small_clip_dimens` and `battery_big_clip_dimens`.
+
+### PCB doesn't click in
+
+Make sure the battery is flush with its housing. Also make sure you didn't
+break the clips.
+
 ## License
 
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
