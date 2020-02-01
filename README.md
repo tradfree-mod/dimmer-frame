@@ -13,7 +13,7 @@ There are two configations:
 ## Building the design
 
 Prebuilt STL downloads:
-https://gitlab.com/tradfree/bottom-case/-/jobs/artifacts/master/?job=render
+https://gitlab.com/tradfree/bottom-case/-/jobs/artifacts/master/browse?job=render
 
 The design can be built in two ways:
 
