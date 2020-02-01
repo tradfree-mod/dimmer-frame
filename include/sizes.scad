@@ -102,9 +102,21 @@ lid_clips_slot_dimens=[0.5, membr_spacial_slots_dimens.y, main_body_dimens.z-lid
 
 
 pcb_thickn=1.5; // just to be on the safe side
-pcb_clip_h=1.5;
+pcb_clip_h=2;
 
-pcb_clip_stick_dimens=[.7, 4, 5-pcb_clip_h];
+pcb_small_clip_dimens=[
+    pcb_standoffs_dimens.x,
+    pcb_standoffs_dimens.y,
+    pcb_housing_dimens.z-pcb_thickn-pcb_standoffs_dimens.z
+];
+pcb_small_clip_pos_z=pcb_housing_pos.z+pcb_standoffs_dimens.z+pcb_thickn;
+pcb_small_clip_positions=[
+    // The ones on the right
+    pcb_standoffs_positions[2],
+    pcb_standoffs_positions[6]
+];
+
+pcb_clip_stick_dimens=[.7, 4, pcb_small_clip_pos_z-pcb_housing_pos.z];
 pcb_clip_stick_pos=[
     pcb_housing_pos.x-pcb_clip_stick_dimens.x,
     main_body_dimens.y/2-pcb_clip_stick_dimens.y/2,
@@ -113,7 +125,7 @@ pcb_clip_stick_pos=[
 
 pcb_clip_dent_dimens=[
     pcb_clip_stick_dimens.y,
-    pcb_clip_stick_dimens.x*2,
+    pcb_clip_stick_dimens.x*3,
     pcb_clip_h
 ];
 pcb_clip_dent_rot=[0, 0, 90];
@@ -128,18 +140,6 @@ pcb_clip_cutoff_pos=[
     pcb_housing_pos.x-pcb_clip_cutoff_dimens.x,
     main_body_dimens.y/2-pcb_clip_cutoff_dimens.y/2,
     membrane_inset_pos.z-pcb_clip_cutoff_dimens.z
-];
-
-pcb_small_clip_dimens=[
-    pcb_standoffs_dimens.x,
-    pcb_standoffs_dimens.y,
-    pcb_housing_dimens.z-pcb_thickn-pcb_standoffs_dimens.z
-];
-pcb_small_clip_pos_z=pcb_housing_pos.z+pcb_standoffs_dimens.z+pcb_thickn;
-pcb_small_clip_positions=[
-    // The ones on the right
-    pcb_standoffs_positions[2],
-    pcb_standoffs_positions[6]
 ];
 
 screw_hole_rad=screw_diam*1.2/2;
