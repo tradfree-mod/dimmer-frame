@@ -14,7 +14,7 @@ membrane_inset_pos=[
     (main_body_dimens.y-membrane_inset_dimens.y)/2,
     main_body_dimens.z-membrane_inset_dimens.z
 ];
-membrane_inset_corner_rad=10;
+membrane_inset_corner_rad=main_body_corner_rad-membrane_inset_pos.x;
 
 pcb_housing_dimens=[35, 35, 4.5];
 pcb_housing_pos=[
@@ -22,7 +22,7 @@ pcb_housing_pos=[
     (main_body_dimens.y-pcb_housing_dimens.y)/2,
     main_body_dimens.z-membrane_inset_dimens.z-pcb_housing_dimens.z
 ];
-pcb_housing_corner_rad=6.5;
+pcb_housing_corner_rad=main_body_corner_rad-pcb_housing_pos.x;
 
 pcb_standoffs_h=2;
 pcb_standoffs_dimens=[1.5, 1.5, pcb_standoffs_h];
@@ -172,6 +172,6 @@ alignment_notch_pos=[
 ];
 
 
-// Lid sizes
+// Custom "lid" sizes
 
-//lid_dimens=[main_body_dimens.x, main_body_dimens.y, ]
+lid_dimens=[main_body_dimens.x, main_body_dimens.y, 10];
