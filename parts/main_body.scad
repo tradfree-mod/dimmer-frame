@@ -76,18 +76,18 @@ module mainBody() {
 
 					// Lid clip slots
 					translate([
-						wall_thickn-lid_clips_slot_dimens.x/2,
+						wall_thickn-lid_clips_slot_dimens.x,
 						main_body_dimens.x/2+membr_spacial_offset_center,
 						lid_clips_slot_z
 					])
-					cube(lid_clips_slot_dimens);
+					cube(lid_clips_slot_dimens + [.2, 0, 1]);
 
 					translate([
-						wall_thickn-lid_clips_slot_dimens.x/2,
+						wall_thickn-lid_clips_slot_dimens.x,
 						main_body_dimens.x/2-membr_spacial_offset_center-lid_clips_slot_dimens.y,
 						lid_clips_slot_z
 					])
-					cube(lid_clips_slot_dimens);
+					cube(lid_clips_slot_dimens + [.2, 0, 1]);
 
 					// Carve out the PCB holder hole
 					translate(pcb_holder_hole_pos - [.5, 0, 0])
