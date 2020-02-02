@@ -175,3 +175,38 @@ alignment_notch_pos=[
 // Custom "lid" sizes
 
 lid_dimens=[main_body_dimens.x, main_body_dimens.y, 10];
+lid_corner_rad=main_body_corner_rad;
+
+custom_pcb_thickn=1;
+
+custom_pcb_housing_dimens=[
+    pcb_housing_dimens.x,
+    pcb_housing_dimens.y,
+    lid_dimens.z-wall_thickn
+];
+custom_pcb_housing_pos=[
+    (lid_dimens.x - custom_pcb_housing_dimens.x)/2,
+    (lid_dimens.y - custom_pcb_housing_dimens.y)/2,
+    lid_dimens.z - custom_pcb_housing_dimens.z
+];
+custom_pcb_housing_corner_rad=lid_corner_rad-custom_pcb_housing_pos.x;
+
+usb_c_hole_dimens=[
+    9.4,
+    3.5,
+    (lid_dimens.y-custom_pcb_housing_dimens.y)/2
+];
+
+// TODO update once we have the PCB
+usb_c_hole_pos=[
+    (lid_dimens.x - usb_c_hole_dimens.x)/2,
+    0,
+    (lid_dimens.z - usb_c_hole_dimens.z)/2,    
+];
+
+usb_c_corner_rad=1.5;
+
+lid_screw_pos=[
+    lid_dimens.x/2,
+    lid_dimens.y-9
+];
