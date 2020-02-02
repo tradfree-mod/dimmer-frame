@@ -102,6 +102,7 @@ membr_spacial_offset_center=4;
 lid_clips_slot_z=1.3;
 lid_clips_slot_dimens=[0.5, membr_spacial_slots_dimens.y, main_body_dimens.z-lid_clips_slot_z];
 
+custom_lid_clips_slot_dimens=lid_clips_slot_dimens-[0, 0, 3];
 
 pcb_thickn=1.4; // just to be on the safe side
 pcb_clip_h=2;
