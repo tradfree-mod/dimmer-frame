@@ -6,9 +6,17 @@ This is a 3D-printable replica of the IKEA lights dimmer frame.
 
 There are two configations:
 
-- One is compatible with the original IKEA bottom lid
+- One is compatible with the original IKEA bottom lid, and can be used
+  as a replacement for it (`bottom-case-ikea.stl`)
 - One also exposes the SWD debug header and will be compatible
-  with our debug chip and bottom lid (which we haven't finished yet)
+  with our [debug chip](https://github.com/tradfree-mod/hardware) and
+  bottom lid (which we haven't finished yet) (`bottom-case.stl`)
+
+Note that, since 3D-printed clips are quite fragile and they easily
+break if you try to fit in the PCB, we decided that the best way to
+hold the PCB in place would be a slide-in holder. You can find it in
+the prebuilt STL downloads under `other/pcb-holder.stl`. It slides in
+on the side and in our tests it's a lot stronger than a regular clip.
 
 ## Building the design
 
