@@ -177,6 +177,7 @@ alignment_notch_pos=[
 lid_dimens=[main_body_dimens.x, main_body_dimens.y, 10];
 lid_corner_rad=main_body_corner_rad;
 
+// Actual PCB is 0.8 but we add some margin
 custom_pcb_thickn=1;
 
 custom_pcb_housing_dimens=[
@@ -209,4 +210,13 @@ usb_c_corner_rad=1.5;
 lid_screw_pos=[
     lid_dimens.x/2,
     lid_dimens.y-9
+];
+
+
+custom_pcb_standoffs_h = usb_c_hole_pos.z+usb_c_hole_dimens.z-custom_pcb_housing_pos.z;
+antenna_notch_dimens=[8.2, 22.9, custom_pcb_standoffs_h];
+antenna_notch_pos=[
+    custom_pcb_housing_pos.x,
+    custom_pcb_housing_pos.y + 11.2,
+    custom_pcb_housing_pos.z
 ];

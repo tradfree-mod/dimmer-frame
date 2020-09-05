@@ -6,7 +6,7 @@ ring_rad=1;
 ring_len=0.4;
 solder_tip_rad=0.4;
 solder_tip_len=1.5;
-fn=100;
+fn=50;
 
 
 translate([0, 0, tip_len+body_len+ring_len])
