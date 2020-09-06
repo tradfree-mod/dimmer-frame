@@ -150,6 +150,17 @@ module mainBodySupportsHardcore() {
 			translate(screw_pos)
 			circularSupport(h=screw_rod_h, r=screw_rod_rad, $fn=fn);
 
+
+			// Custom case clip
+			if (custom_case_clip) {
+				translate([
+					main_body_dimens.x - 3,
+					3
+				])
+				rotate([0, 0, 45])
+				translate([-custom_case_clip_dimens.x/2, 0, 0.8])
+				cube(custom_case_clip_dimens + [0, 3, -0.8]);
+			}
 		} // union
 
 		translate([-10, -10, main_body_dimens.z])

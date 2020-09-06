@@ -102,8 +102,6 @@ membr_spacial_offset_center=4;
 lid_clips_slot_z=1.3;
 lid_clips_slot_dimens=[0.5, membr_spacial_slots_dimens.y, main_body_dimens.z-lid_clips_slot_z];
 
-custom_lid_clips_slot_dimens=lid_clips_slot_dimens-[0, 0, 3];
-
 pcb_thickn=1.4; // just to be on the safe side
 pcb_clip_h=2;
 
@@ -171,11 +169,24 @@ alignment_notch_pos=[
     main_body_dimens.z - alignment_notch_dimens.z
 ];
 
+custom_case_clip_sphere_pos = [
+    pcb_housing_pos.x + pcb_housing_dimens.x ,
+    pcb_housing_pos.y,
+    -3.5
+];
+custom_case_clip_sphere_d = 12;
+
+custom_case_clip_dimens = [2, 3, 1];
+
 
 // Custom "lid" sizes
 
 lid_dimens=[main_body_dimens.x, main_body_dimens.y, 10];
 lid_corner_rad=main_body_corner_rad;
+
+
+gasket_thickn = 2;
+gasket_thickn_z = 1;
 
 // Actual PCB is 0.8 but we add some margin
 custom_pcb_thickn=1;
@@ -183,8 +194,17 @@ custom_pcb_thickn=1;
 custom_pcb_housing_dimens=[
     pcb_housing_dimens.x,
     pcb_housing_dimens.y,
-    lid_dimens.z-wall_thickn
+    lid_dimens.z-wall_thickn-gasket_thickn_z
 ];
+
+gasket_dimens = [
+    custom_pcb_housing_dimens.x,
+    custom_pcb_housing_dimens.y,
+    gasket_thickn_z
+];
+
+gasket_pos = ([main_body_dimens.x, main_body_dimens.y] - [gasket_dimens.x, gasket_dimens.y])/2;
+
 custom_pcb_housing_pos=[
     (lid_dimens.x - custom_pcb_housing_dimens.x)/2,
     (lid_dimens.y - custom_pcb_housing_dimens.y)/2,
@@ -214,9 +234,28 @@ lid_screw_pos=[
 
 
 custom_pcb_standoffs_h = usb_c_hole_pos.z+usb_c_hole_dimens.z-custom_pcb_housing_pos.z;
-antenna_notch_dimens=[8.2, 22.9, custom_pcb_standoffs_h];
+antenna_notch_dimens=[9.4, pcb_housing_dimens.y, custom_pcb_standoffs_h];
 antenna_notch_pos=[
     custom_pcb_housing_pos.x,
-    custom_pcb_housing_pos.y + 11.2,
+    custom_pcb_housing_pos.y ,
     custom_pcb_housing_pos.z
 ];
+
+ikea_screw_pos = [
+    main_body_dimens.x/2,
+    33.5
+];
+
+ikea_screw_d = 2;
+
+button_pusher_d = 2;
+button_pusher_horz_len = 10;
+button_pusher_pos = [main_body_dimens.x - button_hole_pos.y - .2, button_hole_pos.x];
+button_pusher_h = 13;
+
+magnet_d = 15;
+magnet_pos = [20, 18];
+magnet_h = 1;
+
+bottom_text_pos = [main_body_dimens.x, main_body_dimens.y] - [pcb_housing_pos.x, pcb_housing_pos.y];
+top_text_pos = [main_body_dimens.x - 1, 1.3] + [-pcb_housing_pos.x, pcb_housing_pos.y];

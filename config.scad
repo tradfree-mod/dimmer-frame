@@ -6,6 +6,9 @@ screw_pos=[9, 33];
 // Set to false if you want to use it with the IKEA bottom lid
 carve_swd_hole=true;
 
+// Custom bottom lid support clip, set to false if using the IKEA lid
+custom_case_clip=true;
+
 screw_hole_fn=6;
 
 build_supports="none";

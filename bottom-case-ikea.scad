@@ -9,5 +9,6 @@ screw_pos=[
     21
 ];
 carve_swd_hole=false;
+custom_case_clip=false;
 
 mainBody();
